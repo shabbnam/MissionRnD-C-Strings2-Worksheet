@@ -16,8 +16,30 @@ original String
 
 #include <stddef.h>
 #include <stdlib.h>
+int length_of_string(char *str)
+{
+	int i = 0;
+	while (str[i] != '\0'){ i++; }
+	return i;
+
+}
 
 char * get_sub_string(char *str, int i, int j){
+	if (!str){ return NULL; }
+	if (i > j){ return NULL; }
+	else
+	{
+		int alpha = 0,index;
+		char *string = (char*)malloc(length_of_string(str)*sizeof(char));
+		for (index = i; index <= j; index++)
+		{
+			string[alpha++] = str[index];
 
-    return NULL;
+		}
+		string[alpha] = '\0';
+		string = (char*)realloc(string, alpha*sizeof(char));
+		return string;
+	}
+	return NULL;
+    
 }
